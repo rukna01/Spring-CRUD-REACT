@@ -1,10 +1,12 @@
 package com.projectFirst.projectFirst.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,7 @@ import com.projectFirst.projectFirst.entities.Course;
 import com.projectFirst.projectFirst.services.CourseService;
 
 @RestController
+@CrossOrigin // To provide a permission to ui to interact with api.
 public class MyController {
 
 	 @GetMapping("/demo")
@@ -33,7 +36,7 @@ public class MyController {
 	 }
 	 
 	 @GetMapping("/courses/{courseId}")
-	 public Course getCourse(@PathVariable String courseId) {
+	 public Optional<Course> getCourse(@PathVariable String courseId) {
 		 return this.courseService.getCourse(Long.parseLong(courseId));
 	 }
 	 

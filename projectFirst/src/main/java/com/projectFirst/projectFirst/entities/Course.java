@@ -1,8 +1,17 @@
 package com.projectFirst.projectFirst.entities;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="course")
 public class Course {
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "id",nullable = false)
 	private long id;
+	@Column(name = "title",nullable = false)
 	private String title;
+	@Column(name = "description",nullable = false)
 	private String description;
 	
 	public Course(long id, String title, String description) {
